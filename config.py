@@ -4,11 +4,11 @@ PocketFlow 公共配置文件
 """
 
 # 智谱 AI 配置
-ZHIPU_API_KEY = "270e0dd1068148918a3b67f35cc04c1f.3K6N0ZgdLHXPWQQp"
+ZHIPU_API_KEY = "xxxxxxxxxxxxx"
 ZHIPU_MODEL = "glm-5"
 
 # Kimi AI 配置
-KIMI_API_KEY = "sk-15WhKl5vDXzcjUfwq1NrFV6FkgrhMQmgufsL96Fe84gwRinu"
+KIMI_API_KEY = "xxxxxxxxxxxxxxxxxx"
 KIMI_MODEL = "moonshot-v1-8k"
 KIMI_BASE_URL = "https://api.moonshot.cn/v1"
 
