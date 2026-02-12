@@ -81,7 +81,7 @@ python examples/basic_chatbot.py
 ## 📚 参考
 
 - [PocketFlow 官方仓库](https://github.com/The-Pocket/PocketFlow)
-- [我的知乎探索笔记](https://zhihu.com)（待发布）
+- [我的知乎探索笔记](https://zhuanlan.zhihu.com/p/2005221888620777895)
 
 ## ⚠️ 免责声明
 
