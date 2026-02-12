@@ -17,13 +17,26 @@ wget https://raw.githubusercontent.com/The-Pocket/PocketFlow/main/pocketflow.py
 ### 2. 安装依赖
 
 ```bash
-pip install openai
+pip install zhipuai
 ```
 
-### 3. 运行示例
+### 3. 配置 API Key
+
+项目已内置智谱 GLM-5 API Key，配置在 `config.py` 中。如需更换模型或 API Key，只需修改 `config.py`：
+
+```python
+# config.py
+ZHIPU_API_KEY = "your-api-key"
+ZHIPU_MODEL = "glm-5"
+
+# 或使用 update_config 函数动态更新
+from config import update_config
+update_config(api_key="new-key", model="new-model")
+```
+
+### 4. 运行示例
 
 ```bash
-export OPENAI_API_KEY="your-key"
 python examples/basic_chatbot.py
 ```
 
@@ -32,9 +45,10 @@ python examples/basic_chatbot.py
 ```
 .
 ├── pocketflow.py              # PocketFlow核心（100行）
+├── config.py                  # 公共配置文件（API Key、模型配置）
 ├── src/
 │   ├── nodes/
-│   │   ├── gpt_node.py       # GPT调用节点
+│   │   ├── gpt_node.py       # GLM-5调用节点
 │   │   ├── analyzer_node.py  # 需求分析节点
 │   │   └── generator_node.py # 代码生成节点
 │   └── flows/

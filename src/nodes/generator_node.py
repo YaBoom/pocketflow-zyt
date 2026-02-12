@@ -2,6 +2,11 @@ import sys
 sys.path.insert(0, '.')
 
 from pocketflow import Node
+from config import call_llm
+
+def gpt_call(prompt: str, model: str = None) -> str:
+    """Call LLM API using config."""
+    return call_llm(prompt, model)
 
 
 class CodeGenerator(Node):
@@ -31,28 +36,7 @@ class CodeGenerator(Node):
         Output: Complete, runnable Python code.
         """
         
-        # TODO: Replace with actual GPT call
-        # Mock response
-        code = '''
-from pocketflow import Node, Flow
-
-class Step1Node(Node):
-    def exec(self, prep_res):
-        # TODO: Implement step 1
-        return "Step 1 done"
-
-class Step2Node(Node):
-    def exec(self, prep_res):
-        # TODO: Implement step 2  
-        return "Step 2 done"
-
-# Create flow
-step1 = Step1Node()
-step2 = Step2Node()
-step1 >> step2
-flow = Flow(step1)
-        '''
-        return code.strip()
+        return gpt_call(prompt)
     
     def post(self, shared, prep_res, exec_res):
         """Store generated code."""

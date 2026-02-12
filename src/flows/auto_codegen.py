@@ -2,11 +2,11 @@ import sys
 sys.path.insert(0, '.')
 
 from pocketflow import Node, Flow
+from config import call_llm
 
-# Mock GPT call
-def gpt_call(prompt: str) -> str:
-    """Mock GPT call."""
-    return f"[Generated code for: {prompt[:30]}...]"
+def gpt_call(prompt: str, model: str = None) -> str:
+    """Call LLM API using config."""
+    return call_llm(prompt, model)
 
 
 class RequirementAnalyzer(Node):
@@ -25,13 +25,9 @@ class RequirementAnalyzer(Node):
         return gpt_call(prompt)
     
     def post(self, shared, prep_res, exec_res):
-        # Parse steps (mock result)
-        shared["steps"] = [
-            "1. Parse user input",
-            "2. Call weather API", 
-            "3. Format results",
-            "4. Send email"
-        ]
+        lines = [line.strip() for line in exec_res.strip().split('\\n') if line.strip()]
+        shared["steps"] = lines
+        shared["raw_analysis"] = exec_res
         return "default"
 
 

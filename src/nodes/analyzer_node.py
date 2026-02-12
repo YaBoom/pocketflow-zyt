@@ -2,6 +2,11 @@ import sys
 sys.path.insert(0, '.')
 
 from pocketflow import Node
+from config import call_llm
+
+def gpt_call(prompt: str, model: str = None) -> str:
+    """Call LLM API using config."""
+    return call_llm(prompt, model)
 
 
 class RequirementAnalyzer(Node):
@@ -13,8 +18,6 @@ class RequirementAnalyzer(Node):
     
     def exec(self, prep_res):
         """Call GPT to analyze requirement."""
-        # TODO: Replace with actual GPT call
-        # This is mock logic for demonstration
         prompt = f"""
         Analyze the following requirement and break it into 3-5 concrete steps:
         
@@ -22,13 +25,7 @@ class RequirementAnalyzer(Node):
         
         Output format: One step per line, numbered.
         """
-        # Mock response
-        return """
-        1. Parse and validate user input
-        2. Query external API for data
-        3. Process and format the results
-        4. Deliver output to user
-        """
+        return gpt_call(prompt)
     
     def post(self, shared, prep_res, exec_res):
         """Parse steps and store in shared state."""

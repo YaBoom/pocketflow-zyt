@@ -2,15 +2,11 @@ import sys
 sys.path.insert(0, '.')
 
 from pocketflow import Node
+from config import call_llm
 
-# Mock GPT call - replace with actual OpenAI API
-def gpt_call(prompt: str, model: str = "gpt-4o-mini") -> str:
-    """Call GPT API."""
-    # TODO: Replace with actual OpenAI API call
-    import os
-    # api_key = os.getenv("OPENAI_API_KEY")
-    # ...
-    return f"[MOCK RESPONSE] {prompt[:50]}..."
+def gpt_call(prompt: str, model: str = None) -> str:
+    """Call LLM API using config."""
+    return call_llm(prompt, model)
 
 
 class GPTNode(Node):

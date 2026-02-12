@@ -2,12 +2,11 @@ import sys
 sys.path.insert(0, '.')
 
 from pocketflow import Node, Flow
-import os
+from config import call_llm
 
-# Mock OpenAI for demo (replace with actual API call)
-def gpt_call(prompt: str) -> str:
-    """Mock GPT call - replace with actual OpenAI API."""
-    return f"[MOCK] Processed: {prompt[:50]}..."
+def gpt_call(prompt: str, model: str = None) -> str:
+    """Call LLM API using config."""
+    return call_llm(prompt, model)
 
 
 class GPTNode(Node):
